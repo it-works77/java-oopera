@@ -57,7 +57,7 @@ public class Show {
         int index = -1;
 
         for (int i = 0; i < listOfActors.size(); i++) {
-            if (listOfActors.get(i).getSurname() == surnameToSubstitute) {
+            if (listOfActors.get(i).getSurname().equals(surnameToSubstitute)) {
                 index = i;
                 break;
             }
@@ -77,5 +77,18 @@ public class Show {
                 ", duration=" + duration +
                 ", title='" + title + '\'' +
                 '}';
+    }
+
+    public Actor getActor(String actorSurname) {
+        int index = -1;
+
+        for (int i = 0; i < listOfActors.size(); i++) {
+            if (listOfActors.get(i).getSurname().equals(actorSurname)) {
+                index = i;
+                break;
+            }
+        }
+        if (index == -1) return null;
+        return listOfActors.get(index);
     }
 }
