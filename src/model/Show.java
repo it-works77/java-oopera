@@ -31,7 +31,6 @@ public class Show {
         return listOfActors;
     }
 
-    // TODO implement
     public void addActor(Actor actor) {
         /* Добавить нового актёра в спектакль. При добавлении актёра должна быть проверка,
          * нет ли уже такого актёра среди добавленных. Если есть, должно выводиться предупреждающее сообщение,
@@ -47,7 +46,6 @@ public class Show {
 
     }
 
-    // TODO implement
     public void substituteActor(Actor actor, String surnameToSubstitute) {
         /* Заменить одного актёра в спектакле на другого (на вход подаётся объект нового актёра
          * и фамилия того, которого он заменяет).
