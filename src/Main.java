@@ -53,8 +53,6 @@ public class Main {
         ac.printSubstitutionInfo(showFrom, showTo, sourceActorSurname, destinationActorSurname);
         ac.substituteActor(showFrom, showTo, sourceActorSurname, destinationActorSurname);
 
-        ac.printAllShowActors();
-
         // Для оперного и балетного спектакля выведите на экран текст либретто
         ac.printLibretto();
 
