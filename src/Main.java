@@ -35,7 +35,7 @@ public class Main {
         Show showFrom = ac.getShow(SHOW_FROM);
         Show showTo = ac.getShow(SHOW_TO);
 
-        if (showFrom == null && showTo == null) {
+        if (showFrom == null || showTo == null) {
             System.out.println("Нет такого спекталя, проверьте название: '" + showFrom + "', '" + showTo + "'");
             return;
         }

@@ -41,6 +41,49 @@ public class ApplicationController {
         }
     }
 
+    public void substituteActor(Show showFrom, Show showTo, String sourceActorSurname, String destinationActorSurname) {
+        Actor sourceActor = showFrom.getActor(sourceActorSurname);
+        if (sourceActor == null) {
+            System.out.println("В спектакле " + showFrom.getTitle() + " нет актера " + sourceActorSurname);
+            return;
+        }
+
+        showTo.substituteActor(sourceActor, destinationActorSurname);
+    }
+
+    public Show getShow(String title) {
+        Show show;
+        int showIndex = -1;
+        for (int i = 0; i < shows.size(); i++) {
+            show = shows.get(i);
+            if (show.getTitle().equals(title)) {
+                showIndex = i;
+            }
+        }
+        if (showIndex == -1) {
+            return null;
+        }
+        return shows.get(showIndex);
+    }
+
+    public ArrayList<Show> getShows() {
+        return shows;
+    }
+
+    public void printGreeting() {
+        System.out.println("Поехали!");
+    }
+
+    public void printSubstitutionInfo(Show showFrom,
+                                      Show showTo,
+                                      String sourceActorSurname,
+                                      String destinationActorSurname) {
+        System.out.println("Заменяем актера " + destinationActorSurname
+                + " в спектакле '" + showTo.getTitle()
+                + "' на актера " + sourceActorSurname
+                + " из спектакля '" + showFrom.getTitle() + "'");
+    }
+
     public void printAllShowActors() {
         for (Show s : shows) {
             System.out.println();
@@ -59,49 +102,5 @@ public class ApplicationController {
                 System.out.println("Либретто спектакля '" + s.getTitle() + "': " + ((MusicalShow) s).getLibrettoText());
             }
         }
-    }
-
-    public void substituteActor(Show showFrom, Show showTo, String sourceActorSurname, String destinationActorSurname) {
-        Actor sourceActor = showFrom.getActor(sourceActorSurname);
-        if (sourceActor == null) {
-            System.out.println("В спектакле " + showFrom.getTitle() + " нет актера " + sourceActorSurname);
-            return;
-        }
-
-        showTo.substituteActor(sourceActor, destinationActorSurname);
-    }
-
-    public Show getShow(String title) {
-        Show show = null;
-
-        int showIndex = -1;
-        for (int i = 0; i < shows.size(); i++) {
-            show = shows.get(i);
-            if (show.getTitle().equals(title)) {
-                showIndex = i;
-            }
-        }
-        if (showIndex == -1) {
-            return null;
-        }
-        return shows.get(showIndex);
-    }
-
-    public void printGreeting() {
-        System.out.println("Поехали!");
-    }
-
-    public void printSubstitutionInfo(Show showFrom,
-                                      Show showTo,
-                                      String sourceActorSurname,
-                                      String destinationActorSurname) {
-        System.out.println("Заменяем актера " + destinationActorSurname
-                + " в спектакле '" + showTo.getTitle()
-                + "' на актера " + sourceActorSurname
-                + " из спектакля '" + showFrom.getTitle() + "'");
-    }
-
-    public ArrayList<Show> getShows() {
-        return  shows;
     }
 }

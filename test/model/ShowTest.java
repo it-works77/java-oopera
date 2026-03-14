@@ -14,7 +14,6 @@ class ShowTest {
     private ArrayList<Show> shows;
     private ArrayList<Actor> actors;
     private Actor notExistingActor;
-    private final int HEIGHT = 180;
 
     @BeforeEach
     void setUp() {
@@ -22,6 +21,7 @@ class ShowTest {
         ac.prepareShows();
         shows = ac.getShows();
         actors = PersonsGenerator.generateActors();
+        int HEIGHT = 180;
         notExistingActor = new Actor("AAA", "BBB", Gender.MALE, HEIGHT);
     }
 

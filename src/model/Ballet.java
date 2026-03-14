@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Ballet extends MusicalShow {
     public final Person choreographer;
 
@@ -10,5 +8,9 @@ public class Ballet extends MusicalShow {
                   String libretto, Person musicAuthor, Person choreographer) {
         super(title, duration, director, libretto, musicAuthor);
         this.choreographer = choreographer;
+    }
+
+    public Person getChoreographer() {
+        return choreographer;
     }
 }
