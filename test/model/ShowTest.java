@@ -18,7 +18,9 @@ class ShowTest {
 
     @BeforeEach
     void setUp() {
-        shows = ApplicationController.prepareShows();
+        ApplicationController ac = new ApplicationController();
+        ac.prepareShows();
+        shows = ac.getShows();
         actors = PersonsGenerator.generateActors();
         notExistingActor = new Actor("AAA", "BBB", Gender.MALE, HEIGHT);
     }
@@ -45,7 +47,7 @@ class ShowTest {
 
     @org.junit.jupiter.api.Test
 
-    void substituteExistingActor() {
+    void substituteNotExistingActor() {
         Show s = shows.getFirst();
         s.addActor(actors.getFirst());
 
@@ -57,7 +59,7 @@ class ShowTest {
     }
 
     @org.junit.jupiter.api.Test
-    void substituteNotExistingActor() {
+    void substituteExistingActor() {
         Assertions.fail();
     }
 }

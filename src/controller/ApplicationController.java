@@ -100,4 +100,8 @@ public class ApplicationController {
                 + "' на актера " + sourceActorSurname
                 + " из спектакля '" + showFrom.getTitle() + "'");
     }
+
+    public ArrayList<Show> getShows() {
+        return  shows;
+    }
 }
