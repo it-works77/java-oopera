@@ -39,7 +39,7 @@ public class Show {
          * */
 
         if (listOfActors.contains(actor)) {
-            System.out.println("Актер уже участвует в спектакле:" + actor);
+            System.out.println("Актер уже участвует в спектакле: " + actor);
         } else {
             listOfActors.add(actor);
         }
@@ -52,8 +52,15 @@ public class Show {
          * Если актёр с такой фамилией отсутствует, должно выводиться предупреждающее сообщение.
          * Порядок актёров в списке значения не имеет
          * */
-        int index = -1;
 
+        // Замечание: Можно попробовать обработать ситуацию, когда актер с такой фамилией уже есть в спектакле
+        // Проверим не только фамилию, а наличие объекта актера
+        if (listOfActors.contains(actor)) {
+            System.out.println("Актер " + actor.getSurname() + " уже участвует в спектакле");
+            return;
+        }
+
+        int index = -1;
         for (int i = 0; i < listOfActors.size(); i++) {
             if (listOfActors.get(i).getSurname().equals(surnameToSubstitute)) {
                 index = i;

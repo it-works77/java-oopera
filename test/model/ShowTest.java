@@ -1,8 +1,8 @@
 package model;
 
 import controller.ApplicationController;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import util.PersonsGenerator;
 
 import java.util.ArrayList;
@@ -22,17 +22,17 @@ class ShowTest {
         shows = ac.getShows();
         actors = PersonsGenerator.generateActors();
         int HEIGHT = 180;
-        notExistingActor = new Actor("AAA", "BBB", Gender.MALE, HEIGHT);
+        notExistingActor = new Actor("AAA", "BBB", Gender.FEMALE, HEIGHT);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void addNewActor() {
         Show s = shows.getFirst();
         s.addActor(notExistingActor);
         assertTrue(s.getListOfActors().contains(notExistingActor));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void addExistingActor() {
         Show s = shows.getFirst();
         s.addActor(actors.getFirst());
@@ -45,8 +45,7 @@ class ShowTest {
         assertEquals(actorsNumBefore, s.getListOfActors().size());
     }
 
-    @org.junit.jupiter.api.Test
-
+    @Test
     void substituteNotExistingActor() {
         Show s = shows.getFirst();
         s.addActor(actors.getFirst());
@@ -58,8 +57,23 @@ class ShowTest {
         assertFalse(s.getListOfActors().contains(actorToSubstitute));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void substituteExistingActor() {
-        Assertions.fail();
+        Show s = shows.getFirst();
+
+        Actor sourceActor = actors.get(0);
+        Actor destinationActor = actors.get(1);
+        s.addActor(sourceActor);
+        s.addActor(destinationActor);
+
+        int actorsNumBefore = s.getListOfActors().size();
+        s.substituteActor(sourceActor, destinationActor.getSurname());
+
+        // Список должен содержать актера, которого пытались заменить
+        assertTrue(s.getListOfActors().contains(destinationActor));
+
+        // Длина списка не изменилась
+        assertEquals(actorsNumBefore, s.getListOfActors().size());
+
     }
 }
